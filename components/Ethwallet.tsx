@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { mnemonicToSeed } from "bip39";
 import { Wallet, HDNodeWallet } from "ethers";
+import { Button } from "./ui/button";
 
 interface EthWalletProps {
   mnemonic: string;
@@ -23,9 +24,9 @@ export const EthWallet: React.FC<EthWalletProps> = ({ mnemonic }) => {
 
   return (
     <div>
-      <button onClick={handleAddWallet}>
+      <Button onClick={handleAddWallet} className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
         Add ETH wallet
-      </button>
+      </Button>
 
       {addresses.map((address, index) => (
         <div key={index}>

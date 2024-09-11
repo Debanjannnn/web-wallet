@@ -4,8 +4,9 @@ import { useState } from 'react';
 import { generateMnemonic } from 'bip39';
 import { SolanaWallet } from './Solanawallet';
 import { EthWallet } from '../Ethwallet';
+import { Button } from './button';
 
-interface MnemonicGeneratorProps {}
+interface MnemonicGeneratorProps { }
 
 export const MnemonicGenerator: React.FC<MnemonicGeneratorProps> = () => {
   const [mnemonic, setMnemonic] = useState<string>("");
@@ -16,14 +17,18 @@ export const MnemonicGenerator: React.FC<MnemonicGeneratorProps> = () => {
   };
 
   return (
-    <>
-      <input type="text" value={mnemonic} readOnly />
-      <button onClick={handleGenerateMnemonic}>
-        Create Seed Phrase
-      </button>
-
+    <div >
+      <div className='flex justify-center mt-24 text-black'>
+        <input type="text" value={mnemonic} />
+        <Button onClick={handleGenerateMnemonic}  >
+          Create Seed Phrase
+        </Button>
+        </div>
+      <div className='flex flex-col justify-center mt-24 gap-2 items-center'>
       {mnemonic && <SolanaWallet mnemonic={mnemonic} />}
       {mnemonic && <EthWallet mnemonic={mnemonic} />}
-    </>
+      </div>
+      
+    </div>
   );
 };

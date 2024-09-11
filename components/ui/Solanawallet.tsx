@@ -3,6 +3,7 @@ import { mnemonicToSeed } from "bip39";
 import { derivePath } from "ed25519-hd-key";
 import { Keypair } from "@solana/web3.js";
 import nacl from "tweetnacl";
+import { Button } from "./button";
 
 interface SolanaWalletProps {
     mnemonic: string;
@@ -26,17 +27,16 @@ export const SolanaWallet: React.FC<SolanaWalletProps> = ({ mnemonic }) => {
     };
 
     return (
-        <div className="p-4 bg-gray-100 min-h-screen">
-            <button 
+        <div >
+            <Button 
                 onClick={addWallet} 
-                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300"
-            >
+                className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-700 transition duration-300">
                 Add SOL wallet
-            </button>
+            </Button>
 
             <div className="mt-4">
                 {publicKeys.map((publicKey, index) => (
-                    <div key={index} className="bg-white p-2 my-2 rounded shadow">
+                    <div key={index} >
                         {publicKey}
                     </div>
                 ))}
